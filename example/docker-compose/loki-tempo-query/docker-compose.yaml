@@ -5,7 +5,7 @@ services:
     image: grafana/tempo:latest
     command: [ "-config.file=/etc/tempo.yaml" ]
     volumes:
-      - ../local/tempo-local.yaml:/etc/tempo.yaml
+      - ./tempo.yaml:/etc/tempo.yaml
       - ./tempo-data:/tmp/tempo
     ports:
       - "14268"  # jaeger ingest
@@ -45,7 +45,7 @@ services:
     image: prom/prometheus:latest
     command: [ "--config.file=/etc/prometheus.yaml" ]
     volumes:
-      - ../shared/prometheus.yaml:/etc/prometheus.yaml
+      - ./prometheus.yaml:/etc/prometheus.yaml
     ports:
       - "9090:9090"
     logging:
